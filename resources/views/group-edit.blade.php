@@ -1,46 +1,19 @@
-@include('includes.general-include-one-of-four')
+@include('includes.base-dom/general-include-one-of-four')
 
+  <link href="{{ asset('css/treeview.css') }}" rel="stylesheet">
 
-<style>
-html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-/* .g-futuristic-indented-list {
-margin-left: 1em;
-margin-top: 1em;
-border-left: 2px lightgrey solid;
-padding-left: 1em;
-} */
-.g-bor-gre {
-  border: 2px lightgrey solid;
-}
-.g-bor-top-0 {
-  border-top: 0px ;
-
-}
-
-/* stuf */
-.f-treeview li.f-leaf {
-  list-style-image: url('https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/images/file.png');
-}
-.f-treeview li {
-  list-style-image: url('https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/images/closed.png');
-}
-/* stuf */
-</style>
-
-@include('includes.general-include-two-of-four')
+@include('includes.base-dom/general-include-two-of-four')
 
 
 
-@include('includes.SmartDataFileItemMenu')
-@include('includes.SmartDataFolderItemMenu')
-@include('includes.ShallowSmartDataMenu')
+@include('includes.item-menus/SmartDataFileItemMenu')
+@include('includes.item-menus/SmartDataFolderItemMenu')
+@include('includes.item-menus/ShallowSmartDataMenu')
 @include('includes.encode_decode')
 
 @include('includes.menu_post')
 
-@include('includes.general-include-three-of-four')
-
-
+@include('includes.base-dom/general-include-three-of-four')
 
 
 <!-- Left Column -->
@@ -56,35 +29,14 @@ padding-left: 1em;
 <!-- Middle Column -->
 <div class="w3-col m8">
 
-
-
-
-
   <form  id="form" enctype="multipart/form-data" name="1" class="" action="{{ $allURLs['sub_post_store'] }}" method="post">
 
-    <input class="g-bor-gre"  style="display: none;" type="text" name="All_Content" value="1">
+    <input class="g-bor-gre"  style="display: none;" type="text" name="post_files_create_from_zip" value="1">
 
     {{csrf_field()}}
     <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 
-      <h2>Upload Content</h2>
-      <div class="">
-        <label>Please Select Zip File</label>
-        <input class="g-bor-gre"  type="file" name="zip_file" />
-        <input class="g-bor-gre"  type="submit" name="<?php echo $SmartDataItemM_ShowActions['RichDataStore'] ?>" value="Store"><br>
-      </div>
-      <br>
-    </div>
-
-  </form>
-  <form  id="form" enctype="multipart/form-data" name="1" class="" action="{{ $allURLs['sub_post_store'] }}" method="post">
-
-    <input class="g-bor-gre"  style="display: none;" type="text" name="Upload_content" value="1">
-
-    {{csrf_field()}}
-    <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-
-      <h2>Upload Content</h2>
+      <h2>Create post files from Zip</h2>
       <div class="">
         <label>Please Select Zip File</label>
         <input class="g-bor-gre"  type="file" name="zip_file" />
@@ -264,6 +216,25 @@ padding-left: 1em;
 
 
   </form>
+
+  <form  id="form" enctype="multipart/form-data" name="1" class="" action="{{ $allURLs['sub_post_store'] }}" method="post">
+
+    <input class="g-bor-gre"  style="display: none;" type="text" name="All_Content" value="1">
+
+    {{csrf_field()}}
+    <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+
+      <h2>Smart Data</h2>
+      <div class="">
+        <label>Please Select Zip File</label>
+        <input class="g-bor-gre"  type="file" name="zip_file" />
+        <input class="g-bor-gre"  type="submit" name="<?php echo $SmartDataItemM_ShowActions['RichDataStore'] ?>" value="Store"><br>
+      </div>
+      <br>
+    </div>
+
+  </form>
+
   <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 
     <h2>Sub-posts</h2>
@@ -291,4 +262,4 @@ padding-left: 1em;
 
 
 
-@include('includes.general-include-four-of-four')
+@include('includes.base-dom/general-include-four-of-four')

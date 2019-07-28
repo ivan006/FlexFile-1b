@@ -1,41 +1,25 @@
 
 
 
-@include('includes.general-include-one-of-four')
+@include('includes.base-dom/general-include-one-of-four')
 
-
-<style>
-html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-.g-futuristic-indented-list {
-  margin-left: 1em;
-  margin-top: 1em;
-  border-left: 2px whitesmoke solid;
-  padding-left: 1em;
-}
-.g-bor-gre {
-  border: 2px whitesmoke solid;
-}
-.g-bor-top-0 {
-  border-top: 0px ;
-
-}
+<link href="{{ asset('css/treeview.css') }}" rel="stylesheet">
 
 
 
-</style>
-
-@include('includes.general-include-two-of-four')
+@include('includes.base-dom/general-include-two-of-four')
 
 
 
-@include('includes.SmartDataFileItemMenu')
-@include('includes.SmartDataFolderItemMenu')
-@include('includes.ShallowSmartDataMenu')
+@include('includes.item-menus/SmartDataFileItemMenu')
+@include('includes.item-menus/SmartDataFolderItemMenu')
+@include('includes.item-menus/SmartDataNetworkItemMenu')
+@include('includes.item-menus/ShallowSmartDataMenu')
 @include('includes.encode_decode')
 
 @include('includes.menu_post')
 
-@include('includes.general-include-three-of-four')
+@include('includes.base-dom/general-include-three-of-four')
 
 
 
@@ -53,16 +37,6 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 <!-- Middle Column -->
 <div class="w3-col m8">
 
-
-
-
-
-
-
-
-
-
-
   <?php
   // if (isset($VSiteHeader)) {
   //   echo $VSiteHeader;
@@ -72,62 +46,43 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
   //   echo $VPgCont["rich.txt"];
   // }
   ?>
-<style media="screen">
-/* stuf */
-.f-treeview li.f-leaf {
-  list-style-image: url('https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/images/file.png');
-}
-.f-treeview li {
-  list-style-image: url('https://www.w3.org/TR/wai-aria-practices/examples/treeview/treeview-1/images/closed.png');
-}
-/* stuf */
-</style>
-
-
-
-
         <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
 
           <h2>
             Groups
 
           </h2>
+          <form  enctype="multipart/form-data" name="1" class="" action="{{ $allURLs['sub_post_store'] }}" method="post">
 
-          <div class="f-treeview">
-            <ul>
-              <li>
-                Harmonyville.net
-                <?php echo SmartDataFolderItemMenu('hey - Copy',$SmartDataItemM_ShowActions); ?>
-                <ul>
-                  <?php foreach($PostList as $key => $value){?>
-                    <li class="f-leaf">
-                      <a href="{{$value['url']}}">
-                        {{$key}}
-                      </a>
-                    </li>
-                  <?php }?>
+            <input class="g-bor-gre"  style="display: none;" type="text" name="All_Content" value="1">
 
-                </ul>
-              </li>
-            </ul>
-          </div>
+            {{csrf_field()}}
+            <div class="f-treeview">
+              <ul>
+                <li>
+                  Network
+                  <?php echo SmartDataNetworkItemMenu('hey - Copy',$SmartDataItemM_ShowActions); ?>
+                  <ul>
+                    <?php //dd($PostList) ?>
+                    <?php foreach($PostList as $key => $value){?>
+                      <li class="f-leaf">
+                        <a href="{{$value['url']}}">
+                          {{$key}}
+                        </a>
+                      </li>
+                    <?php }?>
+
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </form>
 
           <br>
 
         </div>
 
-
-
-
-
-
-
-
-
   <br>
-
-
-
 
 
 
@@ -144,4 +99,4 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
 
 
-@include('includes.general-include-four-of-four')
+@include('includes.base-dom/general-include-four-of-four')
