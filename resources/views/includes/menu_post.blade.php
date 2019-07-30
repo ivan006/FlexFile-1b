@@ -15,18 +15,18 @@
             Mode
           </a>
           <ul>
-            <li>
+            <!-- <li>
               <a  href=""><del>Create</del>
               </a>
-            </li>
+            </li> -->
             <li>
-              <a  href="{{ $allURLs['sub_post_read'] }}">Show
+              <a  href=" {{ $allURLs['sub_post_read'] }}">Show
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a  href=""><del>Destroy</del>
               </a>
-            </li>
+            </li> -->
             <li>
               <a  href="{{ $allURLs['sub_post_edit'] }}">Edit
               </a>
