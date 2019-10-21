@@ -45,6 +45,7 @@ class Network extends Controller
      */
     public function store(Request $request)
     {
+      //
       // dd($request);
       $arguments = func_get_args();
       array_shift($arguments);
